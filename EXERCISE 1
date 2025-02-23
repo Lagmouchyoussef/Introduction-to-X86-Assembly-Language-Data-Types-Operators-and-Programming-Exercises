@@ -1,0 +1,16 @@
+• model SmolQ
+• data
+    r lib ?
+    x db /6
+    y lib /44
+    z db /120
+
+• code
+main Fleet
+    mov_d, y
+    sub_d&, z
+    sub_d&, x
+    mov_t, d&
+
+endp
+end main
