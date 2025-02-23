@@ -1,0 +1,48 @@
+.data
+    val_0100 dw ? 
+    val_0200 dw ?  
+    val_0300 dw ?  
+
+.code
+main proc
+    ; Initialisation des valeurs (exemple)
+    mov val_0100, 100h  
+    mov val_0200, 200h  
+
+    ; [0200] = [0100] + 24h
+    mov ax, val_0100
+    add ax, 24h
+    mov val_0200, ax
+
+    ; [0200] = [0100] - 9Ch
+    mov ax, val_0100
+    sub ax, 9Ch
+    mov val_0200, ax
+
+    ; [0300] = [[0100] AND [0200]] OR 68h
+    mov ax, val_0100
+    and ax, val_0200
+    or ax, 68h
+    mov val_0300, ax
+
+    ; [0300] = [[0100] * [0200]] / 68h
+    mov ax, val_0100
+    mov bx, val_0200
+    mul bx
+    mov bx, 68h
+    div bx
+    mov val_0300, ax
+
+    ; [0300] = [29h * [0100]] / [[0200h] * 27h]
+    mov ax, 29h
+    mov bx, val_0100
+    mul bx
+    mov bx, val_0200
+    mov cx, 27h
+    mul bx
+    div cx
+    mov val_0300, ax
+
+main endp
+
+end main
